@@ -1,0 +1,4 @@
+th:text="${variavel}" -> puxar um texto do back end
+th:each="pedido: ${pedidos}" -> percorrer uma lista
+th:value -> valor de um input
+th.src -> valor de uma iimagem
