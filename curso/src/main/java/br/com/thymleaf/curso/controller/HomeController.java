@@ -1,28 +1,28 @@
 package br.com.thymleaf.curso.controller;
 
-import br.com.thymleaf.curso.model.Pedido;
+import br.com.thymleaf.curso.model.entity.PedidoModel;
+import br.com.thymleaf.curso.model.service.PedidoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
 public class HomeController {
 
+    final PedidoService pedidoService;
+    public HomeController(PedidoService pedidoService) {
+        this.pedidoService = pedidoService;
+    }
+
+
     @GetMapping("/")
     public String home(Model model){
-        Pedido pedido = new Pedido();
+        PedidoModel pedido = new PedidoModel();
 
-        pedido.setNomeProduto("Redmi note 9");
-        pedido.setUrlImagem("https://www.amazon.com.br/Celular-Xiaomi-Redmi-64GB-Dual/dp/B08B3VCF9G");
-        pedido.setUrlProduto("https://www.amazon.com.br/Celular-Xiaomi-Redmi-64GB-Dual/dp/B08B3VCF9G");
-        pedido.setDescricao("Descrição");
-
-
-        List<Pedido> pedidoList = Arrays.asList(pedido);
-        model.addAttribute("pedidos", pedidoList);
+        List<PedidoModel> pedidos = pedidoService.findAll();
+        model.addAttribute("pedidos", pedidos);
 
         return "index";
     }
