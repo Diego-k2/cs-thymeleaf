@@ -8,6 +8,34 @@
 </head>
 <body>
     <div class="container">
+        <div class="card mb-4 mt-2">
+            <div class="card-header">
+                <h1 class="card-title"> Meus pedidos</h1>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <nav class="nav nav-pills">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="">Todos</a>
+                            </li>
+                            <li>
+                                <a  class="nav-link" href="">Aguardando</a>
+                            </li>    
+                            <li>
+                                <a  class="nav-link" href="">Aprovado</a>
+                            </li>
+                            <li>
+                                <a  class="nav-link" href="">Entregues</a>
+                            </li>
+                        </nav>
+                    </div>
+                    <div>
+                        <a href="/pedido/formulario"><button class="btn btn-outline-success my-2 my-sm-0">Novo</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div th:each="pedido: ${pedidos}" class="card">
             <div th:text="${pedido.nomeProduto}" class="card-header">
                 Nome produto: 
@@ -36,7 +64,7 @@
                     </div>
                     <div class="col-12 col-sm-4">
                         <div>
-                            <img th:src="${pedido.urlImagem}" src="https://m.media-amazon.com/images/I/51ByS+gE4JL._AC_.jpg" class="img-thumbnail"/>
+                            <img th:src="${pedido.urlImagem}" src="https://m.media-amazon.com/images/I/51ByS+gE4JL._AC_.jpg" class="img-thumbnail" width="300px" height="300px"/>
                         </div>
                     </div>
                 </div>

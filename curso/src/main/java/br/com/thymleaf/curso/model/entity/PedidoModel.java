@@ -15,16 +15,14 @@ public class PedidoModel {
     @Column(nullable = false)
     private String nomeProduto;
 
-    @Column(nullable = false)
     private double valorProduto;
 
-    @Column(nullable = false)
     private LocalDate dtEntrega;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1000)
     private String urlProduto;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1000)
     private String urlImagem;
 
     @Column(nullable = false)
