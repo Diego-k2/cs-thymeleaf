@@ -25,14 +25,14 @@ public class PedidoController {
 
 
     @GetMapping("/formulario")
-    public String formulario (Model model){
+    public String formulario (Model model,PedidoDto pedidoDto){
         return "pedido/formulario";
     }
 
     @PostMapping("/novo")
     public String novoPedido(@Valid PedidoDto pedidoDto, BindingResult bindingResult){
 
-        if(bindingResult.hasErrors()){
+        if(bindingResult.hasErrors()){ //tratando o erro
             return "pedido/formulario";
         }
 

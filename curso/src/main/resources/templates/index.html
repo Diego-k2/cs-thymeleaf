@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Index</title>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-</head>
+<head th:replace="~{base :: head}"></head>
 <body>
+
+    <div class="logo-container mb-2 p-3 d-flex justify-content-between">
+        <span class="font-mudi">Mudi</span>
+        <a href="" class="mt-auto mb-auto"><button class="btn btn-light">Login</button></a>
+    </div>
+
     <div class="container">
-        <div class="card mb-4 mt-2">
-            <div class="card-header">
-                <h1 class="card-title"> Meus pedidos</h1>
-            </div>
+        <div class="card mb-4 mt-2" >
+            
+            <div th:replace="~{base :: titulo('Meus Pedidos')}"></div>
+
             <div class="card-body">
                 <div class="d-flex justify-content-between">
                     <div>
@@ -36,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <div th:each="pedido: ${pedidos}" class="card">
+        <div th:each="pedido: ${pedidos}" class="card mb-3">
             <div th:text="${pedido.nomeProduto}" class="card-header">
                 Nome produto: 
             </div>

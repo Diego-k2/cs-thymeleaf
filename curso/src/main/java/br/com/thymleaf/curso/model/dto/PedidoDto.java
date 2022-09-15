@@ -6,16 +6,16 @@ import javax.validation.constraints.NotBlank;
 
 public class PedidoDto {
 
-    @NotBlank
+    @NotBlank(message = "O nome campo do produto é obrigatório")
     private String nomeProduto;
 
-    @NotBlank
+    @NotBlank(message = "A URL da imagem é obrigatório")
     private String urlImagem;
 
-    @NotBlank
+    @NotBlank(message = "A URL do produto é obrigatório")
     private String urlProduto;
 
-    @NotBlank
+    @NotBlank(message = "Descrição é obrigatória") //colocando mensagem padrão de erro
     private String descricao;
 
     public String getNomeProduto() {

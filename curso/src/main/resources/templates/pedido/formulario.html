@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Formulario de pedido</title>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<head th:replace="~{base :: head}">
+
 </head>
 <body>
+
+    
+    <div class="logo-container mb-2 p-3 d-flex justify-content-between">
+        <span class="font-mudi">Mudi</span>
+        <a href="" class="mt-auto mb-auto"><button class="btn btn-light">Login</button></a>
+    </div>
+
     <div class="container">
-        <div class="card mb-4 mt-2">
-            <div class="card-header">
-                <h1 class="card-title">Novo pedido</h1>
-            </div>
+        <div class="card mb-4">
+            <div th:replace="~{base :: titulo('Novo pedido')}"></div>
             <div class="card-body">
                 <div class="d-flex justify-content-between">
                     <div>
@@ -34,27 +36,30 @@
             </div>
         </div>
 
-        <div class="card">
+        <div class="card mb-3">
                 <form th:object="${pedidoDto}" class="card-body" action="/pedido/novo" method="post">
                     <div class="form-group">
                         <label for="nomeProduto">Produto</label>
-                        <input th:field="*{nomeProduto}" placeholder="Nome do produto" ria-describedby="emailDescribe" class="form-control">
+                        <input th:field="*{nomeProduto}" placeholder="Nome do produto" ria-describedby="emailDescribe" th:errorclass="is-invalid" class="form-control">
                         <small id="emailDescribe">Informe o nome do produto</small>
+                        <div class="invalid-feedback" th:errors="*{nomeProduto}"> Erro nome do produto</div>
                     </div>
                     <div class="form-group">
                         <label for="urlImagem">URL Imagem</label>
-                        <input th:field="*{urlImagem}"  class="form-control" placeholder="Url da Imagem" ria-describedby="urlImgDescri">
+                        <input th:field="*{urlImagem}" th:errorclass="is-invalid" class="form-control" placeholder="Url da Imagem" ria-describedby="urlImgDescri" >
                         <small id="urlImgDescri">Procure em um site o produto que você deseja</small>
-                        
+                        <div class="invalid-feedback" th:errors="*{urlImagem}"> Erro nome do produto</div>
                     </div>
                     <div class="form-group">
                         <label for="urlProduto">URL Produto</label>
-                        <input th:field="*{urlProduto}" placeholder="Url do Produto" class="form-control" ria-describedby="urlProdutoDescri">
+                        <input th:field="*{urlProduto}" placeholder="Url do Produto" th:errorclass="is-invalid" class="form-control" ria-describedby="urlProdutoDescri">
                         <small id="urlProdutoDescri">Procure em um site o produto que você deseja</small>
+                        <div class="invalid-feedback" th:errors="*{urlProduto}"> Erro nome do URL Produto</div>
                     </div>
                     <div class="form-group">
                         <label for="descricao">Descrição</label>
-                        <textarea th:field="*{descricao}" class="form-control" placeholder="Adicione aqui a descrição do produto"></textarea>
+                        <textarea th:field="*{descricao}" th:errorclass="is-invalid" class="form-control" placeholder="Adicione aqui a descrição do produto"></textarea>
+                        <div class="invalid-feedback" th:errors="*{descricao}"> Erro nome do produto</div>
                     </div>
                     <button class="btn btn-primary mt-2" type="submit">Cadastrar Produto</button>
                 </form>
