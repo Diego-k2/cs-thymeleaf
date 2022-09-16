@@ -1,6 +1,7 @@
 package br.com.thymleaf.curso.model.dto;
 
 import br.com.thymleaf.curso.model.entity.PedidoModel;
+import br.com.thymleaf.curso.model.enuns.StatusPedido;
 
 import javax.validation.constraints.NotBlank;
 
@@ -57,7 +58,7 @@ public class PedidoDto {
         pedidoModel.setDescricao(this.descricao);
         pedidoModel.setUrlImagem(this.urlImagem);
         pedidoModel.setUrlProduto(this.urlProduto);
-
+        pedidoModel.setStatusPedido(StatusPedido.AGUARDANDO);
         return pedidoModel;
     }
 

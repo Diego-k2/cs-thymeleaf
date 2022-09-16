@@ -1,5 +1,7 @@
 package br.com.thymleaf.curso.model.entity;
 
+import br.com.thymleaf.curso.model.enuns.StatusPedido;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.UUID;
@@ -27,6 +29,9 @@ public class PedidoModel {
 
     @Column(nullable = false)
     private String descricao;
+
+    @Enumerated(EnumType.STRING)
+    private StatusPedido statusPedido;
 
     public String getNomeProduto() {
         return nomeProduto;
@@ -74,5 +79,21 @@ public class PedidoModel {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public StatusPedido getStatusPedido() {
+        return statusPedido;
+    }
+
+    public void setStatusPedido(StatusPedido statusPedido) {
+        this.statusPedido = statusPedido;
     }
 }

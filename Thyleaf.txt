@@ -9,3 +9,12 @@ th:erroclass="nomeclasse" -> acrescenta classe se tiver erro
 
 th:fragment="nome" -> criar um template ="nome(paramentro)"
 th:replace="~{nomeArquivo :: nomeFragmento} ou "~{nomeArquivo :: nomeFragmento(paramentro)}
+
+<th:block></th:block> -> tag exclusiva do thymelaef (colocar estruturas de decisão dentro)
+
+th:switch="${condicao}" -> para colocar a condição
+th:case="'VALOR'" -> colocar as entradas se caso
+th:classappend ="${status} == 'valor' ? 'classeQueEuAdd'" adicionar classe com base numa condição
+
+
+redirect:/ -> direcionar para o endereço que voce desejar

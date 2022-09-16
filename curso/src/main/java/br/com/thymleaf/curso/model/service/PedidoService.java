@@ -1,6 +1,7 @@
 package br.com.thymleaf.curso.model.service;
 
 import br.com.thymleaf.curso.model.entity.PedidoModel;
+import br.com.thymleaf.curso.model.enuns.StatusPedido;
 import br.com.thymleaf.curso.model.repository.PedidoRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,4 +25,11 @@ public class PedidoService {
     public PedidoModel save(PedidoModel pedidoModel){
         return pedidoRepository.save(pedidoModel);
     }
+
+    @Transactional
+    public List<PedidoModel> findAllByStatus(StatusPedido statusPedido){
+        return pedidoRepository.findAllByStatusPedido(statusPedido);
+    }
+
+
 }
