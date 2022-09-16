@@ -18,3 +18,8 @@ th:classappend ="${status} == 'valor' ? 'classeQueEuAdd'" adicionar classe com b
 
 
 redirect:/ -> direcionar para o endereço que voce desejar
+
+
+*Ver utilitarios DOCS para formatar as coisas*
+
+${#temporals.format(pedido.dtEntrega, 'dd/MM/yyyy')} -> formatar datas (VER MAIS EM DOCS UTILITARIOS)

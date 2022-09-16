@@ -42,6 +42,7 @@
                 <div th:text="${pedido.nomeProduto}" th:case="'AGUARDANDO'" class="card-header alert alert-warning">Nome produto: </div>
                 <div th:text="${pedido.nomeProduto}" th:case="'APROVADO'" class="card-header alert alert-success">Nome produto: </div>
                 <div th:text="${pedido.nomeProduto}" th:case= "'ENTREGUE'" class="card-header alert alert-info">Nome produto: </div>
+
             </th:block>
             <div class="card-body">
                 <div class="row">
@@ -49,17 +50,17 @@
                         <div class="row">
                             <div class="col-md-4">
                                 Valor: R$
-                                <span th:text="${pedido.valorProduto}">3000</span>
+                                <span th:if="${pedido.valorProduto} != null" th:text="${#numbers.formatDecimal(pedido.valorProduto,3,'POINT',2,'COMMA')}">3000</span>
                             </div>
 
                             <div class="col-md-8">
                                 Data da entrega: 
-                                <span th:text="${pedido.dtEntrega}">10/02/2002</span>
+                                <span th:text="${#temporals.format(pedido.dtEntrega, 'dd/MM/yyyy')}">10/02/2002</span>
                             </div>
                         </div>
                         <div>Produto</div>
                         <div > 
-                            <input th:value="${pedido.urlProduto}" value="Link" class="form-control" readonly>
+                            <input th:value="${pedido.urlProduto}" value="Link" class="form-control" type="url" readonly>
                         </div>
                         <div>
                             <textarea th:text="${pedido.descricao}" class="form-control">Descrição do produto</textarea>
