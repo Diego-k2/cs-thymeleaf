@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head th:replace="~{base :: head}">
+    <style>
+        .center{
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+            <form th:action="@{/login}" method="post">
+                <div class="form-group">
+                    <div class="form-floating mb-2">
+                        <input type="text" class="form-control" name="username" placeholder="E-mail"/>
+                        <label for="floatingInput" >E-mail</label>
+                    </div>
+                    <div class="form-floating mb-2">
+                        <input type="password" class="form-control" name="password" placeholder="Password"/>
+                        <label for="floatingInput" >Senha</label>
+                    </div>
+                    <input type="submit" value="Log in" />
+                </div>
+            </form>       
+    </div>
+</body>
+</html>
