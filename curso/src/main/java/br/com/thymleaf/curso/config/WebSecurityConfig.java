@@ -4,42 +4,46 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+
 
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig {
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
+
+    public  SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
+        httpSecurity
+                .httpBasic()
+                .and()
                 .authorizeHttpRequests()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin(form -> form //libera para todos acessarem o login
+                .formLogin( form -> form
                         .loginPage("/login")
-                        .permitAll()
-                )
-                .logout(logout -> logout.logoutUrl("/logout")); //configurando o logout
+                        .successForwardUrl("/") //pagina padrão
+                        .permitAll())
+                .logout(logout -> logout.logoutUrl("/logout"));
+                return httpSecurity.build();
     }
+
+
+//    public void newUser(){
+//        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//        UserDetails userDetails = User.builder()
+//                .username("maria")
+//                .password(passwordEncoder.encode("123"))
+//                .roles("ADMIN")
+//                .build();
+//    }
 
     @Bean
-    @Override
-    protected UserDetailsService userDetailsService() {
-        UserDetails user =
-                User.withDefaultPasswordEncoder()
-                        .username("diego")
-                        .password("123")
-                        .roles("ADM")
-                        .build();
-
-        return new InMemoryUserDetailsManager(user);
+    public BCryptPasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
-
 
 }

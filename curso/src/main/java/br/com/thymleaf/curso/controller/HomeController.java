@@ -1,13 +1,18 @@
 package br.com.thymleaf.curso.controller;
 
 import br.com.thymleaf.curso.model.entity.PedidoModel;
+import br.com.thymleaf.curso.model.entity.RoleModel;
+import br.com.thymleaf.curso.model.entity.UserModel;
 import br.com.thymleaf.curso.model.enuns.StatusPedido;
+import br.com.thymleaf.curso.model.repository.RoleRepository;
+import br.com.thymleaf.curso.model.repository.UserRepository;
 import br.com.thymleaf.curso.model.service.PedidoService;
-import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -16,8 +21,12 @@ import java.util.Locale;
 public class HomeController {
 
     final PedidoService pedidoService;
-    public HomeController(PedidoService pedidoService) {
+    final RoleRepository roleRepository;
+    final UserRepository userRepository;
+    public HomeController(PedidoService pedidoService, RoleRepository roleRepository, UserRepository userRepository) {
         this.pedidoService = pedidoService;
+        this.roleRepository = roleRepository;
+        this.userRepository = userRepository;
     }
 
     @GetMapping()
@@ -42,6 +51,23 @@ public class HomeController {
     public String onError(){
         return "redirect:/";
     }
+
+//    @GetMapping("/save")
+//    public String save(){
+//
+//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//
+//        UserModel userModel = new UserModel();
+//        userModel.setUsername("maria");
+//        userModel.setPassword(encoder.encode("123"));
+//        RoleModel roleModel = roleRepository.findByRole("ADMIN").get();
+//        List<RoleModel> roleModels = new ArrayList<>();
+//        roleModels.add(roleModel);
+//        userModel.setRoles(roleModels);
+//
+//        userRepository.save(userModel);
+//        return "redirect:/login";
+//    }
 
 //    public String onNotFound(){
 //        return "redirect:/";
