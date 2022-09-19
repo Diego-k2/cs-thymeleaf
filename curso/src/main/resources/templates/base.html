@@ -24,3 +24,15 @@
 <div th:fragment="titulo(valorTitulo)" class="card-header">
     <h1 class="card-title" th:text="${valorTitulo}"></h1>
 </div>
+
+
+<div th:fragment="header" class="logo-container mb-2 p-3 d-flex justify-content-between">
+    <div>
+        <span class="font-mudi">Mudi</span>
+    </div>
+    <div class=" mb-2 p-3">
+        <a href="/login" sec:authorize="!isAuthenticated()" class="mt-auto mb-auto"><button class="btn btn-light">Login</button></a>
+        <a onclick="document.querySelector('#form-de-login').submit()" href="#" sec:authorize="isAuthenticated()" class="mt-auto mb-auto"><button class="btn btn-light">Logout</button></a>
+        <form th:action="@{/logout}" id="form-de-login" method="post"></form>
+    </div>
+</div>

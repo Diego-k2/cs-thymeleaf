@@ -24,7 +24,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin(form -> form //libera para todos acessarem o login
                         .loginPage("/login")
                         .permitAll()
-                );
+                )
+                .logout(logout -> logout.logoutUrl("/logout")); //configurando o logout
     }
 
     @Bean
@@ -39,5 +40,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         return new InMemoryUserDetailsManager(user);
     }
+
 
 }

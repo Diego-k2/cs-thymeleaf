@@ -15,6 +15,7 @@ th:replace="~{nomeArquivo :: nomeFragmento} ou "~{nomeArquivo :: nomeFragmento(p
 th:switch="${condicao}" -> para colocar a condição
 th:case="'VALOR'" -> colocar as entradas se caso
 th:classappend ="${status} == 'valor' ? 'classeQueEuAdd'" adicionar classe com base numa condição
+th:if= condição
 
 
 redirect:/ -> direcionar para o endereço que voce desejar
@@ -23,3 +24,10 @@ redirect:/ -> direcionar para o endereço que voce desejar
 *Ver utilitarios DOCS para formatar as coisas*
 
 ${#temporals.format(pedido.dtEntrega, 'dd/MM/yyyy')} -> formatar datas (VER MAIS EM DOCS UTILITARIOS)
+
+sec:authorize = verificação de segurança(serve para logado ou roles)
+Necessario colocar essa dependencia
+<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
+</dependency>
