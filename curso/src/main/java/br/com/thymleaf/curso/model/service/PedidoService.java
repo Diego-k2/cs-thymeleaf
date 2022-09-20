@@ -1,12 +1,14 @@
 package br.com.thymleaf.curso.model.service;
 
 import br.com.thymleaf.curso.model.entity.PedidoModel;
+import br.com.thymleaf.curso.model.entity.UserModel;
 import br.com.thymleaf.curso.model.enuns.StatusPedido;
 import br.com.thymleaf.curso.model.repository.PedidoRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class PedidoService {
@@ -29,6 +31,18 @@ public class PedidoService {
     @Transactional
     public List<PedidoModel> findAllByStatus(StatusPedido statusPedido){
         return pedidoRepository.findAllByStatusPedido(statusPedido);
+    }
+
+    @Transactional
+    public List<PedidoModel> findAllByUserAndStatusPedido(UserModel userModel, StatusPedido statusPedido){
+        return pedidoRepository.findAllByUserAndStatusPedido(userModel, statusPedido);
+    }
+
+
+
+    @Transactional
+    public List<PedidoModel> findAllByUser(UserModel userModel){
+        return pedidoRepository.findAllByUser(userModel);
     }
 
 

@@ -20,6 +20,10 @@ public class UserModel implements UserDetails {
 
     private String password;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
+    private List<PedidoModel> pedidos;
+
+
     @ManyToMany
     @JoinTable(name ="TB_USERS_ROLES",
     joinColumns = @JoinColumn(name = "user_id"),
