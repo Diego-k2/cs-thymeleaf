@@ -3,7 +3,7 @@ th:each="pedido: ${pedidos}" -> percorrer uma lista
 th:value -> valor de um input
 th:src -> valor de uma iimagem
 th:object="${classe}" -> puxar com base no objeto do form 
-th:field="*{campo}" -> pegar campo 
+th:field="*{campo}" -> pegar campo para o DTO
 th:error="*{campo}" -> mostra mensagem se tiver erro
 th:erroclass="nomeclasse" -> acrescenta classe se tiver erro
 

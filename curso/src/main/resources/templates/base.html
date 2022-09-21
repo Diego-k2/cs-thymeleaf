@@ -5,6 +5,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+        <link type="image/png" sizes="16x16" rel="icon" href=".../icons8-gostar-16.png">
 
         <style>
             .logo-container{
@@ -26,13 +27,24 @@
 </div>
 
 
-<div th:fragment="header" class="logo-container mb-2 p-3 d-flex justify-content-between">
-    <div>
-        <span class="font-mudi">Mudi</span>
+<div th:fragment="header">
+    <div class="row logo-container mb-2 p-3 d-flex justify-content-between">
+        <div class="col-11">
+            <span class="font-mudi ml-2">Mudi</span>
+        </div>
+        <div class="col-1 mb-2 p-3">
+            <a href="/login" sec:authorize="!isAuthenticated()" class="mt-auto mb-auto"><button class="btn btn-light">Login</button></a>
+            <a onclick="document.querySelector('#form-de-login').submit()" href="#" sec:authorize="isAuthenticated()" class="mt-auto mb-auto"><button class="btn btn-light">Logout</button></a>
+            <form th:action="@{/logout}" id="form-de-login" method="post"></form>
+        </div>
     </div>
-    <div class=" mb-2 p-3">
-        <a href="/login" sec:authorize="!isAuthenticated()" class="mt-auto mb-auto"><button class="btn btn-light">Login</button></a>
-        <a onclick="document.querySelector('#form-de-login').submit()" href="#" sec:authorize="isAuthenticated()" class="mt-auto mb-auto"><button class="btn btn-light">Logout</button></a>
-        <form th:action="@{/logout}" id="form-de-login" method="post"></form>
+    <div class="row">
+        <div class="col" sec:authorize="isAuthenticated()">
+            <nav class="nav">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link"href="/usuario">Pedidos do usuario</a>
+            </nav>
+        </div>
     </div>
+
 </div>

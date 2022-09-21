@@ -7,39 +7,13 @@
     <div class="container">
         <div class="card mb-4 mt-2" >
             
-            <div th:replace="~{base :: titulo('Meus Pedidos')}"></div>
+            <div th:replace="~{base :: titulo('Ultimos Pedidos')}"></div>
 
-            <div class="card-body">
-                <div class="d-flex justify-content-between">
-                    <div>
-                            <nav class="nav nav-pills">
-                                <li class="nav-item">
-                                    <a th:classappend="${status} == 'todos' ? 'active'" class="nav-link" href="/">Todos</a>
-                                </li>
-                                <li>
-                                    <a  th:classappend="${status} == 'aguardando' ? 'active'" class="nav-link" href="/aguardando">Aguardando</a>
-                                </li>    
-                                <li>
-                                    <a th:classappend="${status} == 'aprovado' ? 'active'" class="nav-link" href="/aprovado">Aprovado</a>
-                                </li>
-                                <li>
-                                    <a  th:classappend="${status} == 'entregue' ? 'active'" class="nav-link" href="/entregue">Entregues</a>
-                                </li>
-                            </nav>
-                    </div>
-                    <div>
-                        <a href="/pedido/formulario"><button class="btn btn-outline-success my-2 my-sm-0">Novo</button></a>
-                    </div>
-                </div>
-            </div>
         </div>
         <div th:each="pedido: ${pedidos}" class="card mb-3">
-            <th:block th:switch="${pedido.statusPedido.name()}">
-                <div th:text="${pedido.nomeProduto}" th:case="'AGUARDANDO'" class="card-header alert alert-warning">Nome produto: </div>
-                <div th:text="${pedido.nomeProduto}" th:case="'APROVADO'" class="card-header alert alert-success">Nome produto: </div>
-                <div th:text="${pedido.nomeProduto}" th:case= "'ENTREGUE'" class="card-header alert alert-info">Nome produto: </div>
+           
+                <div th:text="${pedido.nomeProduto}" class="card-header alert alert-info">Nome produto: </div>
 
-            </th:block>
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 col-sm-8 mb-3">

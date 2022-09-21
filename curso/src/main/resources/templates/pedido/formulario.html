@@ -19,16 +19,16 @@
                     <div>
                         <nav class="nav nav-pills">
                             <li class="nav-item">
-                                <a class="nav-link" href="/">Todos</a>
+                                <a class="nav-link" href="/usuario">Todos</a>
                             </li>
                             <li>
-                                <a  class="nav-link" href="">Aguardando</a>
+                                <a  class="nav-link" href="/usuario/aguardando">Aguardando</a>
                             </li>    
                             <li>
-                                <a  class="nav-link" href="">Aprovado</a>
+                                <a  class="nav-link" href="/usuario/aprovado">Aprovado</a>
                             </li>
                             <li>
-                                <a  class="nav-link" href="">Entregues</a>
+                                <a  class="nav-link" href="/usuario/entregue">Entregues</a>
                             </li>
                         </nav>
                     </div>
@@ -37,6 +37,7 @@
         </div>
 
         <div class="card mb-3">
+                <span th:text="${salvo}"></span>
                 <form th:object="${pedidoDto}" class="card-body" th:action="@{/pedido/novo}" method="post">
                     <div class="form-group">
                         <label for="nomeProduto">Produto</label>

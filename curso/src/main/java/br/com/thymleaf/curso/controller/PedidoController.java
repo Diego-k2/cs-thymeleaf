@@ -33,7 +33,7 @@ public class PedidoController {
     }
 
     @PostMapping("/novo")
-    public String novoPedido(@Valid PedidoDto pedidoDto, BindingResult bindingResult, Principal principal){
+    public String novoPedido(@Valid PedidoDto pedidoDto, BindingResult bindingResult, Principal principal, Model model){
 
         if(bindingResult.hasErrors()){ //tratando o erro
             return "pedido/formulario";
@@ -45,6 +45,7 @@ public class PedidoController {
 
         pedidoModel.setUser(userModel);
 
+        model.addAttribute("salvo", "PRODUTO SALVO COM SUCESSO");
         pedidoService.save(pedidoModel);
         return "redirect:/";
     }
