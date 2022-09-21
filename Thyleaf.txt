@@ -25,6 +25,7 @@ redirect:/ -> direcionar para o endereço que voce desejar
 
 ${#temporals.format(pedido.dtEntrega, 'dd/MM/yyyy')} -> formatar datas (VER MAIS EM DOCS UTILITARIOS)
 
+
 sec:authorize = verificação de segurança(serve para logado ou roles)
 Necessario colocar essa dependencia
 <dependency>
@@ -32,4 +33,10 @@ Necessario colocar essa dependencia
 			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
 </dependency>
 
-Classe Principal serve para pegar dados de usuarios logados
+**Classe Principal serve para pegar dados de usuarios logados
+
+********************************************************************
+Cache -> metodo de recuperar os dados de forma rapida 
+@Cacheable -> declarar um cache na aplicação
+Na classe main utilizar -> @EnableCaching = habilita o uso de caches
+********************************************************************

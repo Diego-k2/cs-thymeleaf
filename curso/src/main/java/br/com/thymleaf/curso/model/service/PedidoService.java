@@ -4,6 +4,8 @@ import br.com.thymleaf.curso.model.entity.PedidoModel;
 import br.com.thymleaf.curso.model.entity.UserModel;
 import br.com.thymleaf.curso.model.enuns.StatusPedido;
 import br.com.thymleaf.curso.model.repository.PedidoRepository;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,8 +31,8 @@ public class PedidoService {
     }
 
     @Transactional
-    public List<PedidoModel> findAllByStatus(StatusPedido statusPedido){
-        return pedidoRepository.findAllByStatusPedido(statusPedido);
+    public List<PedidoModel> findAllByStatus(StatusPedido statusPedido, PageRequest sort){
+        return pedidoRepository.findAllByStatusPedido(statusPedido, sort);
     }
 
     @Transactional
