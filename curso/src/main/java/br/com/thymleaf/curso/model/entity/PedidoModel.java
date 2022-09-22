@@ -33,7 +33,7 @@ public class PedidoModel {
     @Enumerated(EnumType.STRING)
     private StatusPedido statusPedido;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private UserModel user;
 
     public String getNomeProduto() {

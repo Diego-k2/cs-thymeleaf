@@ -1,0 +1,3 @@
+v-for="variavel in objeto" -> for each no vue
+
+{{valor}} -> imprimir nome do produto 
